@@ -10,7 +10,7 @@ output: github_document
 library(tidyverse)
 ```
 
-```{r problem_1}
+```{r p1}
 ##set seed for reproducibility purposes
 set.seed(12)
 
@@ -24,9 +24,26 @@ prob1_df = tibble(
 
 ##try to take mean of each variable in dataframe prob1_df
 ##returns N/A for char_vec and fac_vec because the elements are neither numerical nor logical
-mean_random_samp = mean(prob1_df$random_samp)
-mean_log_vec = mean(prob1_df$log_vec)
-mean_char_vec = mean(prob1_df$char_vec)
-mean_fac_vec = mean(prob1_df$fac_vec)
+mean(prob1_df$random_samp)
+mean(prob1_df$log_vec)
+mean(prob1_df$char_vec)
+mean(prob1_df$fac_vec)
+```
+
+```{r p1_conv_num, results = 'hide'}
+##convert logical, character, and factor variables to numeric
+##my logical variable and factor variable have been converted to numeric, but an error tells me N/A forced by coercion for my character variable
+as.numeric(prob1_df$log_vec)
+as.numeric(prob1_df$char_vec)
+as.numeric(prob1_df$fac_vec)
+```
+
+```{r p1_conv_cfn_fcn, results = 'hide'}
+##convert character to factor to numeric
+##this successfully converts
+as.numeric(as.factor(prob1_df$char_vec))
+##convert factor to character to numeric
+##all elements become NA. An error says they are introduced by coercion.
+as.numeric((as.character(prob1_df$fac_vec)))
 ```
 
