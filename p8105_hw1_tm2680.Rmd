@@ -65,3 +65,22 @@ prob2_df = tibble(
 The **size** of the dataset `prob2_df` is `r nrow(prob2_df) * ncol(prob2_df)` observations.
 The **mean** and **median** of x are `r mean(prob2_df$x)` and `r median(prob2_df$x)`, respectively.
 The proportion of cases where the logical vector is **true** is `r sum(prob2_df$p2_log_vec) / nrow(prob2_df)`.
+
+```{r p2_yx_scat_log}
+##scatter plot of y vs. x with color based on logical vector
+##color code: red is false, blue is true
+ggplot(prob2_df, aes(x = x, y = y, color = p2_log_vec)) + geom_point()
+ggsave("p8105_hw1_tm2680_plot.png")
+```
+
+```{r p2_yx_scat_num}
+##scatter plot of y vs. x with color based on numerical vector
+##color code: dark blue is when the element's numerical vector equals 0, and bright blue is when the element's numerical vector equals 1
+ggplot(prob2_df, aes(x = x, y = y, color = p2_num_vec)) + geom_point()
+```
+
+```{r p2_yx_scat_fac}
+##scatter plot of y vs. x with color based on factor vector
+#color code: red is false, blue is true
+ggplot(prob2_df, aes(x = x, y = y, color = p2_fac_vec)) + geom_point()
+```
