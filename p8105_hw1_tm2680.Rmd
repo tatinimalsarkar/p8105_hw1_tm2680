@@ -13,6 +13,7 @@ library(tidyverse)
 ```{r problem_1}
 ##set seed for reproducibility purposes
 set.seed(12)
+
 ##create dataframe with appropriate variables
 prob1_df = tibble(
   random_samp = runif(10, min = 0, max = 5),
@@ -20,5 +21,12 @@ prob1_df = tibble(
   char_vec = c('a','b','c','d','e','f','g','h','i','j'),
   fac_vec = factor(char_vec)
 )
+
+##try to take mean of each variable in dataframe prob1_df
+##returns N/A for char_vec and fac_vec because the elements are neither numerical nor logical
+mean_random_samp = mean(prob1_df$random_samp)
+mean_log_vec = mean(prob1_df$log_vec)
+mean_char_vec = mean(prob1_df$char_vec)
+mean_fac_vec = mean(prob1_df$fac_vec)
 ```
 
