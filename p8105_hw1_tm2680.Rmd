@@ -1,0 +1,22 @@
+---
+title: "Homework 1 for Data Science I"
+author: "Tatini Mal-Sarkar"
+date: "September 14, 2018"
+output: github_document
+---
+
+```{r load_tidyverse, include = FALSE }
+##load tidyverse 
+library(tidyverse)
+```
+
+```{r problem_1}
+##set seed for reproducibility purposes
+set.seed(12)
+##create dataframe with appropriate variables
+prob1_df = tibble(
+  random_samp = rnorm(10, mean = 0, sd = 5),
+  log_vec = random_samp > 2
+)
+```
+
