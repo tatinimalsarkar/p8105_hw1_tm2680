@@ -10,6 +10,7 @@ output: github_document
 library(tidyverse)
 ```
 
+#Problem 1
 ```{r p1}
 ##set seed for reproducibility's sake
 set.seed(12)
@@ -49,6 +50,7 @@ as.numeric((as.character(prob1_df$p1_fac_vec)))
 
 Converting the character first to factor then to numeric works. This is because as.factor assigns numerical values to the character variable in order to turn it into a factor variable. This new factor variable can then easily be converted into its numerical component. Converting the factor to character and then to numeric does not work; all elements become NA. An error says they are introduced by coercion. This is because converting the factor vector into a character vector effectively means there is no longer the numerical component of the factor vector. Consequently, a totally character variable is not successfully converted into a numeric variable.
 
+#Problem 2
 ```{r p2}
 ##set seed for reproducibility's sake
 set.seed(903)
