@@ -65,9 +65,9 @@ prob2_df = tibble(
 )
 ```
 
-##short description of dataframe prob2_df
-The **size** of the dataset `prob2_df` is `r nrow(prob2_df) * ncol(prob2_df)` observations.
-The **mean** and **median** of x are `r mean(prob2_df$x)` and `r median(prob2_df$x)`, respectively.
+##Here is a short description of dataframe `prob2_df`.
+The **size** of the dataset `prob2_df` is `r nrow(prob2_df)` rows and `r ncol(prob2_df)` columns.
+The **mean** and **median** of `x` are `r mean(prob2_df$x)` and `r median(prob2_df$x)`, respectively.
 The proportion of cases where the logical vector is **true** is `r sum(prob2_df$p2_log_vec) / nrow(prob2_df)`.
 
 ```{r p2_yx_scat_log}
