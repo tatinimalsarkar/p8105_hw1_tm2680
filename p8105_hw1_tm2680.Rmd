@@ -23,29 +23,31 @@ prob1_df = tibble(
 )
 
 ##try to take mean of each variable in dataframe prob1_df
-##This chunk returns N/A for char_vec and fac_vec because the elements are neither numerical nor logical. Taking the mean of the numerical variable works because the elements are all numbers. Taking the mean of the logical vector works because the computer sees "true" as 1 and "false" as 0. 
 mean(prob1_df$p1_random_samp)
 mean(prob1_df$p1_log_vec)
 mean(prob1_df$p1_char_vec)
 mean(prob1_df$p1_fac_vec)
 ```
 
+This chunk returns N/A for char_vec and fac_vec because the elements are neither numerical nor logical. Taking the mean of the numerical variable works because the elements are all numbers. Taking the mean of the logical vector works because the computer sees "true" as 1 and "false" as 0.
+
 ```{r p1_conv_num, results = 'hide'}
 ##convert logical, character, and factor variables to numeric
-##My logical variable and factor variable have been converted to numeric, but an error tells me N/A forced by coercion for my character variable. This is because the elements in my logical variable all have binary values "secretly" assigned, and factor variables by definition have some numerical value assigned to them. Character vectors have no such numerical value assigned.
 as.numeric(prob1_df$p1_log_vec)
 as.numeric(prob1_df$p1_char_vec)
 as.numeric(prob1_df$p1_fac_vec)
 ```
 
+My logical variable and factor variable have been converted to numeric, but an error tells me N/A forced by coercion for my character variable. This is because the elements in my logical variable all have binary values "secretly" assigned, and factor variables by definition have some numerical value assigned to them. Character vectors have no such numerical value assigned.
+
 ```{r p1_conv_cfn_fcn, results = 'hide'}
 ##convert character to factor to numeric
-##Converting the character first to factor then to numeric works. This is because as.factor assigns numerical values to the character variable in order to turn it into a factor variable. This new factor variable can then easily be converted into its numerical component.
 as.numeric(as.factor(prob1_df$p1_char_vec))
 ##convert factor to character to numeric
-##This conversion process does not work; all elements become NA. An error says they are introduced by coercion. This is because converting the factor vector into a character vector effectively means there is no longer the numerical component of the factor vector. Consequently, a totally character variable is not successfully converted into a numeric variable.
 as.numeric((as.character(prob1_df$p1_fac_vec)))
 ```
+
+Converting the character first to factor then to numeric works. This is because as.factor assigns numerical values to the character variable in order to turn it into a factor variable. This new factor variable can then easily be converted into its numerical component. Converting the factor to character and then to numeric does not work; all elements become NA. An error says they are introduced by coercion. This is because converting the factor vector into a character vector effectively means there is no longer the numerical component of the factor vector. Consequently, a totally character variable is not successfully converted into a numeric variable.
 
 ```{r p2}
 ##set seed for reproducibility's sake
@@ -68,19 +70,22 @@ The proportion of cases where the logical vector is **true** is `r sum(prob2_df$
 
 ```{r p2_yx_scat_log}
 ##scatter plot of y vs. x with color based on logical vector
-##The color code of the plot based on logical vector means that variables with a false element in the logical vector code as red, and variables with a true element in the logical vector are blue. 
 ggplot(prob2_df, aes(x = x, y = y, color = p2_log_vec)) + geom_point()
 ggsave("p8105_hw1_tm2680_plot.png")
 ```
 
+The color code of the plot based on logical vector means that variables with a false element in the logical vector code as red, and variables with a true element in the logical vector are blue.
+
 ```{r p2_yx_scat_num}
 ##scatter plot of y vs. x with color based on numerical vector
-##When the element's numerical vector equals 0, the point is dark blue. When the element's numerical vector equals 1, the point is bright blue. There is no shading because the numerical vector was coerced from a logical vector, so there are only two options possible for the value of p2_num_vec to take on.
 ggplot(prob2_df, aes(x = x, y = y, color = p2_num_vec)) + geom_point()
 ```
 
+When the element's numerical vector equals 0, the point is dark blue. When the element's numerical vector equals 1, the point is bright blue. There is no shading because the numerical vector was coerced from a logical vector, so there are only two options possible for the value of p2_num_vec to take on.
+
 ```{r p2_yx_scat_fac}
 ##scatter plot of y vs. x with color based on factor vector
-##When the element of the factor vector is false, the point is red. When the element of the factor vector is true, the point is blue.
 ggplot(prob2_df, aes(x = x, y = y, color = p2_fac_vec)) + geom_point()
 ```
+
+When the element of the factor vector is false, the point is red. When the element of the factor vector is true, the point is blue.
